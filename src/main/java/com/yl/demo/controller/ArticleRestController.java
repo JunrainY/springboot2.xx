@@ -21,34 +21,34 @@ public class ArticleRestController {
         log.info("saveArticle：{}",article);
         return  AjaxResponse.success(article);
     }
- 
-    
+
+
     //删除一篇Article，使用DELETE方法，参数是id
     @RequestMapping(value = "/article/{id}", method = DELETE, produces = "application/json")
-  //  @DeleteMapping("/article/{id}")
     public AjaxResponse deleteArticle(@PathVariable Long id) {
         log.info("deleteArticle：{}",id);
         return AjaxResponse.success(id);
     }
- 
-     //更新一篇Article，使用PUT方法，以id为主键进行更新
+
+    //更新一篇Article，使用PUT方法，以id为主键进行更新
     @RequestMapping(value = "/article/{id}", method = PUT, produces = "application/json")
     public AjaxResponse updateArticle(@PathVariable Long id, @RequestBody Article article) {
         article.setId(id);
         log.info("updateArticle：{}",article);
         return AjaxResponse.success(article);
     }
- 
+
     //获取一篇Article，使用GET方法
     @RequestMapping(value = "/article/{id}", method = GET, produces = "application/json")
     public AjaxResponse getArticle(@PathVariable Long id) {
 
         //使用lombok提供的builder构建对象
         Article article1 = Article.builder()
-                                .id(1L)
-                                .author("zimug")
-                                .content("spring boot 2.深入浅出")
-                                .title("t1").build();
+                .id(1L)
+                .author("zimug")
+                .content("spring boot 2.深入浅出")
+                .createTime(new Date())
+                .title("t1").build();
         return AjaxResponse.success(article1);
     }
 }

@@ -3,18 +3,19 @@ package com.yl.demo.model;
 import lombok.Data;
 //请求响应成功，返回给前端的数据都放在data里
 @Data
+
 public class AjaxResponse {
 
-    private boolean isok;   //请求是否处理成功
-    private int code;          //请求响应状态码（200、400、500）
-    private String message;  //请求结果描述信息
-    private Object data;  //请求结果数据
+
+    private boolean isok;
+    private int code;
+    private String message;
+    private Object data;
 
     private AjaxResponse() {
 
     }
 
-    //请求成功的响应，不带查询数据（用于删除、修改、新增接口）
     public static AjaxResponse success() {
         AjaxResponse resultBean = new AjaxResponse();
         resultBean.setIsok(true);
@@ -23,7 +24,6 @@ public class AjaxResponse {
         return resultBean;
     }
 
-    //请求成功的响应，带有查询数据（用于数据查询接口）
     public static AjaxResponse success(Object data) {
         AjaxResponse resultBean = new AjaxResponse();
         resultBean.setIsok(true);
@@ -33,5 +33,5 @@ public class AjaxResponse {
         return resultBean;
     }
 
-    // getter / setter 略
+
 }
